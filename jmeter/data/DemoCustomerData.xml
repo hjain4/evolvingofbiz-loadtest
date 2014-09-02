@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <Party partyId="DemoCustomer1" partyTypeId="PERSON"/>
+    <Person partyId="DemoCustomer1" firstName="DemoOne" lastName="Customer"/>
+    <UserLogin partyId="DemoCustomer1" userLoginId="DemoCustomer1" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a"/>
+    <PartyRole partyId="DemoCustomer1" roleTypeId="CUSTOMER"/>
+    <PartyRole partyId="DemoCustomer1" roleTypeId="CONTACT"/>
+    <PartyRole partyId="DemoCustomer1" roleTypeId="BILL_TO_CUSTOMER"/>
+    <PartyGeoPoint partyId="DemoCustomer1" geoPointId="9001" fromDate="2009-01-09 00:00:00.000"/>
+    <PartyRelationship partyIdFrom="DemoCustCompany" roleTypeIdFrom="ACCOUNT" partyIdTo="DemoCustomer1" roleTypeIdTo="CONTACT" fromDate="2000-01-01 00:00:00.000" partyRelationshipTypeId="EMPLOYMENT"/>
+    <UserLoginSecurityGroup groupId="ECOMMERCE_CUSTOMER" userLoginId="DemoCustomer1" fromDate="2000-01-01 00:00:00.0"/>
+    <ContactMech contactMechId="9015" contactMechTypeId="POSTAL_ADDRESS"/>
+    <PostalAddress contactMechId="9015" toName="DemoOne Customer" address1="2004 Factory Blvd" city="Orem" stateProvinceGeoId="UT" postalCode="84057" countryGeoId="USA" geoPointId="9000"/>
+    <PartyContactMech partyId="DemoCustomer1" contactMechId="9015" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMechPurpose partyId="DemoCustomer1" contactMechId="9015" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer1" contactMechId="9015" contactMechPurposeTypeId="SHIPPING_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer1" contactMechId="9015" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <ContactMech contactMechId="9025" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="9027" contactMechTypeId="TELECOM_NUMBER"/>
+    <TelecomNumber contactMechId="9025" countryCode="1" areaCode="801" contactNumber="555-5555"/>
+    <TelecomNumber contactMechId="9027" countryCode="1" areaCode="801" contactNumber="444-4444"/>
+    <PartyContactMech partyId="DemoCustomer1" contactMechId="9025" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y" extension="222"/>
+    <PartyContactMech partyId="DemoCustomer1" contactMechId="9027" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y" extension="212"/>
+    <PartyContactMechPurpose partyId="DemoCustomer1" contactMechId="9025" contactMechPurposeTypeId="PHONE_HOME" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer1" contactMechId="9025" contactMechPurposeTypeId="PHONE_SHIPPING" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer1" contactMechId="9027" contactMechPurposeTypeId="PHONE_BILLING" fromDate="2001-05-13 00:00:00.000"/>
+    <ContactMech contactMechId="9026" contactMechTypeId="EMAIL_ADDRESS" infoString="DemoCustomer1@example.com"/>
+    <PartyContactMech partyId="DemoCustomer1" contactMechId="9026" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMechPurpose partyId="DemoCustomer1" contactMechId="9026" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2001-05-13 00:00:00.000"/>
+    <PaymentMethod paymentMethodId="9015" paymentMethodTypeId="CREDIT_CARD" partyId="DemoCustomer1" fromDate="2001-05-13 00:00:00.000"/>
+    <CreditCard paymentMethodId="9015" cardType="Visa" cardNumber="4111111111111111" expireDate="02/2021" companyNameOnCard=""
+        titleOnCard="" firstNameOnCard="DEMOONE" middleNameOnCard="" lastNameOnCard="CUSTOMER" suffixOnCard="" contactMechId="9015"/>
+
+    <Party partyId="DemoCustomer2" partyTypeId="PERSON"/>
+    <Person partyId="DemoCustomer2" firstName="DemoTwo" lastName="Customer"/>
+    <UserLogin partyId="DemoCustomer2" userLoginId="DemoCustomer2" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a"/>
+    <PartyRole partyId="DemoCustomer2" roleTypeId="CUSTOMER"/>
+    <PartyRole partyId="DemoCustomer2" roleTypeId="CONTACT"/>
+    <PartyRole partyId="DemoCustomer2" roleTypeId="BILL_TO_CUSTOMER"/>
+    <PartyGeoPoint partyId="DemoCustomer2" geoPointId="9001" fromDate="2009-01-09 00:00:00.000"/>
+    <PartyRelationship partyIdFrom="DemoCustCompany" roleTypeIdFrom="ACCOUNT" partyIdTo="DemoCustomer2" roleTypeIdTo="CONTACT" fromDate="2000-01-01 00:00:00.000" partyRelationshipTypeId="EMPLOYMENT"/>
+    <UserLoginSecurityGroup groupId="ECOMMERCE_CUSTOMER" userLoginId="DemoCustomer2" fromDate="2000-01-01 00:00:00.0"/>
+    <ContactMech contactMechId="9015" contactMechTypeId="POSTAL_ADDRESS"/>
+    <PostalAddress contactMechId="9015" toName="DemoTwo Customer" address1="2004 Factory Blvd" city="Orem" stateProvinceGeoId="UT" postalCode="84057" countryGeoId="USA" geoPointId="9000"/>
+    <PartyContactMech partyId="DemoCustomer2" contactMechId="9015" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMechPurpose partyId="DemoCustomer2" contactMechId="9015" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer2" contactMechId="9015" contactMechPurposeTypeId="SHIPPING_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer2" contactMechId="9015" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <ContactMech contactMechId="9025" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="9027" contactMechTypeId="TELECOM_NUMBER"/>
+    <TelecomNumber contactMechId="9025" countryCode="1" areaCode="801" contactNumber="555-5555"/>
+    <TelecomNumber contactMechId="9027" countryCode="1" areaCode="801" contactNumber="444-4444"/>
+    <PartyContactMech partyId="DemoCustomer2" contactMechId="9025" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y" extension="222"/>
+    <PartyContactMech partyId="DemoCustomer2" contactMechId="9027" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y" extension="212"/>
+    <PartyContactMechPurpose partyId="DemoCustomer2" contactMechId="9025" contactMechPurposeTypeId="PHONE_HOME" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer2" contactMechId="9025" contactMechPurposeTypeId="PHONE_SHIPPING" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer2" contactMechId="9027" contactMechPurposeTypeId="PHONE_BILLING" fromDate="2001-05-13 00:00:00.000"/>
+    <ContactMech contactMechId="9026" contactMechTypeId="EMAIL_ADDRESS" infoString="DemoCustomer2@example.com"/>
+    <PartyContactMech partyId="DemoCustomer2" contactMechId="9026" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMechPurpose partyId="DemoCustomer2" contactMechId="9026" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2001-05-13 00:00:00.000"/>
+    <PaymentMethod paymentMethodId="9015" paymentMethodTypeId="CREDIT_CARD" partyId="DemoCustomer2" fromDate="2001-05-13 00:00:00.000"/>
+    <CreditCard paymentMethodId="9015" cardType="Visa" cardNumber="4111111111111111" expireDate="02/2021" companyNameOnCard=""
+        titleOnCard="" firstNameOnCard="DEMOTWO" middleNameOnCard="" lastNameOnCard="CUSTOMER" suffixOnCard="" contactMechId="9015"/>
+
+    <Party partyId="DemoCustomer3" partyTypeId="PERSON"/>
+    <Person partyId="DemoCustomer3" firstName="DemoThree" lastName="Customer"/>
+    <UserLogin partyId="DemoCustomer3" userLoginId="DemoCustomer3" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a"/>
+    <PartyRole partyId="DemoCustomer3" roleTypeId="CUSTOMER"/>
+    <PartyRole partyId="DemoCustomer3" roleTypeId="CONTACT"/>
+    <PartyRole partyId="DemoCustomer3" roleTypeId="BILL_TO_CUSTOMER"/>
+    <PartyGeoPoint partyId="DemoCustomer3" geoPointId="9001" fromDate="2009-01-09 00:00:00.000"/>
+    <PartyRelationship partyIdFrom="DemoCustCompany" roleTypeIdFrom="ACCOUNT" partyIdTo="DemoCustomer3" roleTypeIdTo="CONTACT" fromDate="2000-01-01 00:00:00.000" partyRelationshipTypeId="EMPLOYMENT"/>
+    <UserLoginSecurityGroup groupId="ECOMMERCE_CUSTOMER" userLoginId="DemoCustomer3" fromDate="2000-01-01 00:00:00.0"/>
+    <ContactMech contactMechId="9015" contactMechTypeId="POSTAL_ADDRESS"/>
+    <PostalAddress contactMechId="9015" toName="DemoThree Customer" address1="2004 Factory Blvd" city="Orem" stateProvinceGeoId="UT" postalCode="84057" countryGeoId="USA" geoPointId="9000"/>
+    <PartyContactMech partyId="DemoCustomer3" contactMechId="9015" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMechPurpose partyId="DemoCustomer3" contactMechId="9015" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer3" contactMechId="9015" contactMechPurposeTypeId="SHIPPING_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer3" contactMechId="9015" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2001-05-13 00:00:00.000"/>
+    <ContactMech contactMechId="9025" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="9027" contactMechTypeId="TELECOM_NUMBER"/>
+    <TelecomNumber contactMechId="9025" countryCode="1" areaCode="801" contactNumber="555-5555"/>
+    <TelecomNumber contactMechId="9027" countryCode="1" areaCode="801" contactNumber="444-4444"/>
+    <PartyContactMech partyId="DemoCustomer3" contactMechId="9025" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y" extension="222"/>
+    <PartyContactMech partyId="DemoCustomer3" contactMechId="9027" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y" extension="212"/>
+    <PartyContactMechPurpose partyId="DemoCustomer3" contactMechId="9025" contactMechPurposeTypeId="PHONE_HOME" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer3" contactMechId="9025" contactMechPurposeTypeId="PHONE_SHIPPING" fromDate="2001-05-13 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="DemoCustomer3" contactMechId="9027" contactMechPurposeTypeId="PHONE_BILLING" fromDate="2001-05-13 00:00:00.000"/>
+    <ContactMech contactMechId="9026" contactMechTypeId="EMAIL_ADDRESS" infoString="DemoCustomer3@example.com"/>
+    <PartyContactMech partyId="DemoCustomer3" contactMechId="9026" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMechPurpose partyId="DemoCustomer3" contactMechId="9026" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2001-05-13 00:00:00.000"/>
+    <PaymentMethod paymentMethodId="9015" paymentMethodTypeId="CREDIT_CARD" partyId="DemoCustomer3" fromDate="2001-05-13 00:00:00.000"/>
+    <CreditCard paymentMethodId="9015" cardType="Visa" cardNumber="4111111111111111" expireDate="02/2021" companyNameOnCard=""
+        titleOnCard="" firstNameOnCard="DEMOTHREE" middleNameOnCard="" lastNameOnCard="CUSTOMER" suffixOnCard="" contactMechId="9015"/>
+</entity-engine-xml>
