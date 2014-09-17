@@ -55,6 +55,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.delayedStart">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -168,10 +169,16 @@
 
 if (random&gt;= 0 &amp;&amp; random &lt; 6) {
 	vars.put(&quot;pickingMethod&quot;, &quot;groupByShippingMethod&quot;);
+	vars.put(&quot;pickingMethodStatus&quot;, &quot;Y&quot;);
+    print(&quot;===================Creating Piclist : shipment method======&quot; + random);
 } else if (random&gt;= 6 &amp;&amp; random &lt; 11) {
 	vars.put(&quot;pickingMethod&quot;, &quot;groupByWarehouseArea&quot;);
+	vars.put(&quot;pickingMethodStatus&quot;, &quot;Y&quot;);
+    print(&quot;===================Creating Piclist : Warehouse Area======&quot; + random);
 } else {
 	vars.put(&quot;pickingMethod&quot;, &quot;groupByNoOfOrderItems&quot;);
+	vars.put(&quot;pickingMethodStatus&quot;, &quot;Y&quot;);
+    print(&quot;===================Creating Piclist : No Of Order Items======&quot; + random);
 }
 </stringProp>
             </BeanShellPreProcessor>
@@ -260,6 +267,7 @@ for(int i=1;i&lt;=orderlistCount;i++) {
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.delayedStart">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -358,7 +366,7 @@ for(int i=1;i&lt;=orderlistCount;i++) {
         </HTTPSamplerProxy>
         <hashTree/>
         <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
-          <stringProp name="WhileController.condition">1</stringProp>
+          <stringProp name="WhileController.condition">true</stringProp>
         </WhileController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get picklistId from PicklistManage page" enabled="true">
@@ -390,8 +398,8 @@ for(int i=1;i&lt;=orderlistCount;i++) {
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Pause Time" enabled="true">
-              <stringProp name="ConstantTimer.delay">15000</stringProp>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Pause Time" enabled="false">
+              <stringProp name="ConstantTimer.delay">5000</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
@@ -405,11 +413,27 @@ for(int i=1;i&lt;=orderlistCount;i++) {
             <stringProp name="variableNames"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
           </JDBCSampler>
-          <hashTree/>
+          <hashTree>
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">resultSize = vars.getObject(&quot;RESULT&quot;).size();
+print(&quot;===============result==========&quot;+vars.getObject(&quot;RESULT&quot;));
+vars.put(&quot;NO_OF_ORDERS&quot;, Integer.toString(resultSize));
+print(&quot;======NO_OF_ORDERS======&quot; + Integer.toString(resultSize));
+
+int whichPicklistBin = 0;
+vars.put(&quot;whichPicklistBin&quot;, whichPicklistBin.toString());</stringProp>
+            </BeanShellPostProcessor>
+            <hashTree/>
+          </hashTree>
           <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
             <stringProp name="BeanShellSampler.query">resultSize = vars.getObject(&quot;RESULT&quot;).size();
+print(&quot;===============result==========&quot;+vars.getObject(&quot;RESULT&quot;));
 vars.put(&quot;loopCount&quot;, Integer.toString(resultSize));
 vars.put(&quot;noOfOrders&quot;, Integer.toString(resultSize));
+print(&quot;======loopCount======&quot; + Integer.toString(resultSize));
 
 int whichPicklistBin = 0;
 vars.put(&quot;whichPicklistBin&quot;, whichPicklistBin.toString());</stringProp>
@@ -427,7 +451,7 @@ vars.put(&quot;whichPicklistBin&quot;, whichPicklistBin.toString());</stringProp
 
 numberOfOrder = numberOfOrder-1;
 vars.put(&quot;loopCount&quot;, Integer.toString(numberOfOrder));
-</stringProp>
+print(&quot;======loopCount=====&quot; + vars.get(&quot;loopCount&quot;));</stringProp>
               <stringProp name="BeanShellSampler.filename"></stringProp>
               <stringProp name="BeanShellSampler.parameters"></stringProp>
               <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
@@ -478,8 +502,10 @@ vars.put(&quot;loopCount&quot;, Integer.toString(numberOfOrder));
 import java.util.Random;
 
 int count = Integer.parseInt(vars.get(&quot;whichPicklistBin&quot;));
+print(&quot;======================count=======================&quot;+count);
 columnValue = vars.getObject(&quot;RESULT&quot;).get(Integer.parseInt(vars.get(&quot;whichPicklistBin&quot;))).get(&quot;PRIMARY_ORDER_ID&quot;);
 
+print(&quot;======================picklist==1=======================&quot;+columnValue.toString());
 vars.put(&quot;primaryOrderId&quot;, columnValue.toString());
 
 count = count+1;
@@ -542,7 +568,7 @@ vars.put(&quot;whichPicklistBin&quot;, count.toString());</stringProp>
               </RegexExtractor>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Pause Time" enabled="true">
-                <stringProp name="ConstantTimer.delay">15000</stringProp>
+                <stringProp name="ConstantTimer.delay">5000</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
@@ -768,7 +794,7 @@ for(int i=1;i&lt;=count;i++) {
             <hashTree/>
           </hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
-            <stringProp name="IfController.condition">&quot;${noOfOrders}&quot;&gt;&quot;0&quot;</stringProp>
+            <stringProp name="IfController.condition">&quot;${picklistId}&quot; !=&quot;NA&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -818,7 +844,7 @@ for(int i=1;i&lt;=count;i++) {
                 <boolProp name="resetInterpreter">false</boolProp>
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
-                <stringProp name="script">print(&quot;Picklist picked:&quot;+vars.get(&quot;picklistId&quot;));
+                <stringProp name="script">print(&quot;===============mark picked====noOfOrders======&quot;+Integer.parseInt(vars.get(&quot;noOfOrders&quot;)));
 </stringProp>
               </BeanShellPostProcessor>
               <hashTree/>
